@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    /* Fonts */
+    --font-montserrat: "Montserrat", sans-serif;
+
+    /* Colors */
+    --color-darkGray: #34353a;
+    --color-lightGray: #494b50;
+    --color-lighterGray: #a4a4ac;
+    --color-verylighterGray: #a4a4ac;
+    --color-white: #FFFFFF;
+
+  }
+  @keyframes wave {
+  0%, 100% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+  25% {
+    border-radius: 55% 45% 50% 50% / 50% 50% 55% 45%;
+  }
+  50% {
+    border-radius: 50% 50% 55% 45% / 55% 45% 50% 50%;
+  }
+  75% {
+    border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%;
+  }
+}
+
+.wavy-border {
+  animation: wave 5s infinite;
+}
+  
