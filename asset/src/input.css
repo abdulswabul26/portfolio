@@ -1,0 +1,10 @@
+@font-face{
+    font-family: GT America Mono Light;
+    src: url(../fonts/GT\ America\ Mono\ Light.ttf);
+}
+
+@import "tailwindcss";
+
+@theme{
+    --font-gt-america-mono-light: GT America Mono Light, "san-serif";
+}
