@@ -1,801 +1,2001 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sserunjogi Abdul Swabul</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sserunjogi Abdul Swabul</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <style type="text/tailwindcss">
-    @theme {
-      --color-navy:         #313638;
-      --color-navy-light:   #242424;
-      --color-slate:        #E8E9EB;
-      --color-slate-light:  #E8E9EB;
-      --color-white-dim:    #ccd6f6;
-      --color-white-bright: #ffffff;
-      --color-teal:         #E4B363;
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-sans: 'Inter', sans-serif;
-    }
+    <style type="text/tailwindcss">
+      @theme {
+        --color-navy: #313638;
+        --color-navy-light: #242424;
+        --color-slate: #e8e9eb;
+        --color-slate-light: #e8e9eb;
+        --color-white-dim: #ccd6f6;
+        --color-white-bright: #ffffff;
+        --color-teal: #e4b363;
+        --font-mono: "JetBrains Mono", monospace;
+        --font-sans: "Inter", sans-serif;
+      }
 
-    /* Things Tailwind can't express: pseudo-elements, writing-mode, browser APIs */
-    ::selection          { background: #121212; color: #121212; }
-    ::-webkit-scrollbar  { width: 8px; }
-    ::-webkit-scrollbar-track { background: #121212; }
-    ::-webkit-scrollbar-thumb { background: #a1a3a8; border-radius: 4px; }
+      /* Things Tailwind can't express: pseudo-elements, writing-mode, browser APIs */
+      ::selection {
+        background: #121212;
+        color: #121212;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #121212;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #a1a3a8;
+        border-radius: 4px;
+      }
 
-    .sidebar-line::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 90px;
-      background: #8892b0;
-    }
+      .sidebar-line::after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 90px;
+        background: #8892b0;
+      }
 
-    .vertical-text { writing-mode: vertical-rl; }
+      .vertical-text {
+        writing-mode: vertical-rl;
+      }
 
-    /* Active tab */
-    .tab-btn.active {
-      color: #64ffda;
-      border-left-color: #64ffda;
-      background: rgba(100,255,218,0.05);
-    }
-    .tab-panel        { display: none; }
-    .tab-panel.active { display: block; }
+      /* Active tab */
+      .tab-btn.active {
+        color: #64ffda;
+        border-left-color: #64ffda;
+        background: rgba(100, 255, 218, 0.05);
+      }
+      .tab-panel {
+        display: none;
+      }
+      .tab-panel.active {
+        display: block;
+      }
 
-    /* Scroll fade-in */
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
+      /* Scroll fade-in */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-    /* Project image teal overlay */
-    .img-overlay::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(100,255,218,0.15);
-      transition: opacity 0.3s;
-      border-radius: 4px;
-    }
-    .img-overlay:hover::after { opacity: 0; }
+      /* Project image teal overlay */
+      .img-overlay::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(100, 255, 218, 0.15);
+        transition: opacity 0.3s;
+        border-radius: 4px;
+      }
+      .img-overlay:hover::after {
+        opacity: 0;
+      }
 
-    /* Section heading trailing line */
-    .section-line::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #112240;
-      max-width: 300px;
-    }
+      /* Section heading trailing line */
+      .section-line::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #112240;
+        max-width: 300px;
+      }
 
-    /* Tech icon brand colours on hover */
-    .devicon-javascript-plain:hover { color: #f7df1e !important; }
-    .devicon-python-plain:hover     { color: #3572a5 !important; }
-    .devicon-nodejs-plain:hover     { color: #68a063 !important; }
-    .devicon-mysql-plain:hover      { color: #4479a1 !important; }
-    .devicon-php-plain:hover        { color: #777bb4 !important; }
-    .devicon-html5-plain:hover      { color: #e34f26 !important; }
-    .devicon-css3-plain:hover       { color: #1572b6 !important; }
-    .devicon-github-original:hover  { color: #ffffff !important; }
+      /* Tech icon brand colours on hover */
+      .devicon-javascript-plain:hover {
+        color: #f7df1e !important;
+      }
+      .devicon-python-plain:hover {
+        color: #3572a5 !important;
+      }
+      .devicon-nodejs-plain:hover {
+        color: #68a063 !important;
+      }
+      .devicon-mysql-plain:hover {
+        color: #4479a1 !important;
+      }
+      .devicon-php-plain:hover {
+        color: #777bb4 !important;
+      }
+      .devicon-html5-plain:hover {
+        color: #e34f26 !important;
+      }
+      .devicon-css3-plain:hover {
+        color: #1572b6 !important;
+      }
+      .devicon-github-original:hover {
+        color: #ffffff !important;
+      }
 
+      #preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: var(--color-navy);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        font-family: var(--font-mono);
+        transition:
+          opacity 0.8s ease,
+          visibility 0.8s ease;
+      }
+      #preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
 
+      /* Corner brackets */
+      .pl-corners span {
+        position: fixed;
+        width: 16px;
+        height: 16px;
+        border-color: var(--color-teal);
+        border-style: solid;
+        opacity: 0.25;
+      }
+      .pl-corners span:nth-child(1) {
+        top: 24px;
+        left: 24px;
+        border-width: 1px 0 0 1px;
+      }
+      .pl-corners span:nth-child(2) {
+        top: 24px;
+        right: 24px;
+        border-width: 1px 1px 0 0;
+      }
+      .pl-corners span:nth-child(3) {
+        bottom: 24px;
+        left: 24px;
+        border-width: 0 0 1px 1px;
+      }
+      .pl-corners span:nth-child(4) {
+        bottom: 24px;
+        right: 24px;
+        border-width: 0 1px 1px 0;
+      }
 
-  #preloader {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: var(--color-navy);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    font-family: var(--font-mono);
-    transition: opacity 0.8s ease, visibility 0.8s ease;
-  }
-  #preloader.hidden { opacity: 0; visibility: hidden; }
+      /* Ring */
+      .pl-ring {
+        position: relative;
+        width: 90px;
+        height: 90px;
+      }
+      .pl-ring svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .ring-track {
+        fill: none;
+        stroke: var(--color-navy-light);
+        stroke-width: 1.5;
+      }
+      .ring-progress {
+        fill: none;
+        stroke: var(--color-teal);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-dasharray: 220;
+        stroke-dashoffset: 220;
+        transform-origin: center;
+        transform: rotate(-90deg);
+        transition: stroke-dashoffset 0.08s linear;
+      }
 
-  /* Corner brackets */
-  .pl-corners span {
-    position: fixed;
-    width: 16px; height: 16px;
-    border-color: var(--color-teal);
-    border-style: solid;
-    opacity: 0.25;
-  }
-  .pl-corners span:nth-child(1) { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
-  .pl-corners span:nth-child(2) { top: 24px; right: 24px; border-width: 1px 1px 0 0; }
-  .pl-corners span:nth-child(3) { bottom: 24px; left: 24px; border-width: 0 0 1px 1px; }
-  .pl-corners span:nth-child(4) { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+      /* Spinning diamond */
+      .pl-diamond {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .pl-diamond svg {
+        position: static;
+        width: 28px;
+        height: 28px;
+        animation: spinDiamond 3s linear infinite;
+      }
+      @keyframes spinDiamond {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-  /* Ring */
-  .pl-ring { position: relative; width: 90px; height: 90px; }
-  .pl-ring svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .ring-track { fill: none; stroke: var(--color-navy-light); stroke-width: 1.5; }
-  .ring-progress {
-    fill: none;
-    stroke: var(--color-teal);
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-dasharray: 220;
-    stroke-dashoffset: 220;
-    transform-origin: center;
-    transform: rotate(-90deg);
-    transition: stroke-dashoffset 0.08s linear;
-  }
+      /* Label */
+      .pl-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .pl-pct {
+        font-size: 11px;
+        color: var(--color-teal);
+        letter-spacing: 0.1em;
+      }
+      .pl-label {
+        font-size: 10px;
+        color: var(--color-slate);
+        opacity: 0.4;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+      }
 
-  /* Spinning diamond */
-  .pl-diamond {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .pl-diamond svg {
-    position: static;
-    width: 28px; height: 28px;
-    animation: spinDiamond 3s linear infinite;
-  }
-  @keyframes spinDiamond { to { transform: rotate(360deg); } }
+      /* Add to your CSS */
+      .mobile-nav-link {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--color-white-dim);
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+        transition: color 0.2s;
 
-  /* Label */
-  .pl-info { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .pl-pct { font-size: 11px; color: var(--color-teal); letter-spacing: 0.1em; }
-  .pl-label { font-size: 10px; color: var(--color-slate); opacity: 0.4; letter-spacing: 0.35em; text-transform: uppercase; }
+        opacity: 0;
+        transform: translateX(20px);
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          color 0.2s;
+      }
+      .mobile-nav-link:last-child {
+        border-bottom: none;
+      }
+      .mobile-nav-link:hover {
+        color: var(--color-teal);
+      }
 
-  /* Add to your CSS */
-.mobile-nav-link {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--color-white-dim);
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 14px 0;
-  border-bottom: 0.5px solid rgba(255,255,255,0.06);
-  transition: color 0.2s;
+      /* Staggered reveal when menu opens */
+      #mobile-nav.open .mobile-nav-link:nth-child(3) {
+        transition-delay: 0.08s;
+        opacity: 1;
+        transform: none;
+      }
+      #mobile-nav.open .mobile-nav-link:nth-child(4) {
+        transition-delay: 0.14s;
+        opacity: 1;
+        transform: none;
+      }
+      #mobile-nav.open .mobile-nav-link:nth-child(5) {
+        transition-delay: 0.2s;
+        opacity: 1;
+        transform: none;
+      }
+      #mobile-nav.open .mobile-nav-link:nth-child(6) {
+        transition-delay: 0.26s;
+        opacity: 1;
+        transform: none;
+      }
+      #mobile-nav.open .mobile-nav-link:nth-child(7) {
+        transition-delay: 0.32s;
+        opacity: 1;
+        transform: none;
+      }
+    </style>
+  </head>
 
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s;
-}
-.mobile-nav-link:last-child { border-bottom: none; }
-.mobile-nav-link:hover { color: var(--color-teal); }
+  <body
+    class="bg-navy text-slate font-sans text-base leading-relaxed overflow-x-hidden"
+  >
+    <div id="preloader">
+      <div class="pl-corners">
+        <span></span><span></span><span></span><span></span>
+      </div>
 
-/* Staggered reveal when menu opens */
-#mobile-nav.open .mobile-nav-link:nth-child(3) { transition-delay: 0.08s; opacity:1; transform:none; }
-#mobile-nav.open .mobile-nav-link:nth-child(4) { transition-delay: 0.14s; opacity:1; transform:none; }
-#mobile-nav.open .mobile-nav-link:nth-child(5) { transition-delay: 0.20s; opacity:1; transform:none; }
-#mobile-nav.open .mobile-nav-link:nth-child(6) { transition-delay: 0.26s; opacity:1; transform:none; }
-#mobile-nav.open .mobile-nav-link:nth-child(7) { transition-delay: 0.32s; opacity:1; transform:none; }
-  </style>
-</head>
+      <div class="pl-ring">
+        <svg viewBox="0 0 90 90">
+          <circle class="ring-track" cx="45" cy="45" r="35" />
+          <circle class="ring-progress" id="pl-ring" cx="45" cy="45" r="35" />
+        </svg>
+        <div class="pl-diamond">
+          <svg viewBox="0 0 28 28" fill="none">
+            <rect
+              x="14"
+              y="2"
+              width="17"
+              height="17"
+              rx="1"
+              transform="rotate(45 14 2)"
+              stroke="#E4B363"
+              stroke-width="1"
+              fill="none"
+              opacity="0.5"
+            />
+            <rect
+              x="14"
+              y="7"
+              width="10"
+              height="10"
+              rx="0.5"
+              transform="rotate(45 14 7)"
+              stroke="#E4B363"
+              stroke-width="1.2"
+              fill="none"
+            />
+          </svg>
+        </div>
+      </div>
 
-<body class="bg-navy text-slate font-sans text-base leading-relaxed overflow-x-hidden">
-
-<div id="preloader">
-  <div class="pl-corners">
-    <span></span><span></span><span></span><span></span>
-  </div>
-
-  <div class="pl-ring">
-    <svg viewBox="0 0 90 90">
-      <circle class="ring-track" cx="45" cy="45" r="35"/>
-      <circle class="ring-progress" id="pl-ring" cx="45" cy="45" r="35"/>
-    </svg>
-    <div class="pl-diamond">
-      <svg viewBox="0 0 28 28" fill="none">
-        <rect x="14" y="2" width="17" height="17" rx="1"
-          transform="rotate(45 14 2)" stroke="#E4B363" stroke-width="1" fill="none" opacity="0.5"/>
-        <rect x="14" y="7" width="10" height="10" rx="0.5"
-          transform="rotate(45 14 7)" stroke="#E4B363" stroke-width="1.2" fill="none"/>
-      </svg>
+      <div class="pl-info">
+        <span class="pl-pct"><span id="pl-num">0</span>%</span>
+        <span class="pl-label">loading</span>
+      </div>
     </div>
-  </div>
-
-  <div class="pl-info">
-    <span class="pl-pct"><span id="pl-num">0</span>%</span>
-    <span class="pl-label">loading</span>
-  </div>
-</div>
-<main><!-- ════════════════════════════════════
+    <main>
+      <!-- ════════════════════════════════════
      HEADER
 ════════════════════════════════════ -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center pl-5 pr-12 py-5 bg-transparent transition-all duration-300 ">
-  
-  <nav class="hidden md:flex md:flex-col items-start">
-    <a href="try.html"class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"><span class="text-teal text-[12px] mr-1">01.</span>Home</a>
-    <a href="#about"      class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"><span class="text-teal text-[12px] mr-1">02.</span>About</a>
-    <a href="#experience" class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"><span class="text-teal text-[12px] mr-1">03.</span>Experience</a>
-    <a href="#work"       class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"><span class="text-teal text-[12px] mr-1">04.</span>Work</a>
-    <a href="#contact"    class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"><span class="text-teal text-[12px] mr-1">05.</span>Contact</a>
-    
-  </nav>
-  <div></div>
-  <div></div>
-  <!-- Mobile Navigation -->
+      <header
+        class="fixed top-0 w-full z-50 flex justify-between items-center pl-5 pr-12 py-5 bg-transparent transition-all duration-300"
+      >
+        <nav class="hidden md:flex md:flex-col items-start">
+          <a
+            href="try.html"
+            class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"
+            ><span class="text-teal text-[12px] mr-1">01.</span>Home</a
+          >
+          <a
+            href="#about"
+            class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"
+            ><span class="text-teal text-[12px] mr-1">02.</span>About</a
+          >
+          <a
+            href="#experience"
+            class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"
+            ><span class="text-teal text-[12px] mr-1">03.</span>Experience</a
+          >
+          <a
+            href="#work"
+            class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"
+            ><span class="text-teal text-[12px] mr-1">04.</span>Work</a
+          >
+          <a
+            href="#contact"
+            class="font-mono text-[13px] text-white-dim hover:text-teal transition-colors ml-8"
+            ><span class="text-teal text-[12px] mr-1">05.</span>Contact</a
+          >
+        </nav>
+        <div></div>
+        <div></div>
+        <!-- Mobile Navigation -->
 
-   <!-- Mobile Hamburger Button — visible only when menu is CLOSED -->
-<button
-  id="mobile-menu-btn"
-  class="md:hidden flex flex-col gap-[5px] items-end p-1 focus:outline-none"
-  aria-label="Open menu"
-  onclick="toggleMobileMenu()"
->
-  <span class="block h-[1.5px] w-5 bg-slate"></span>
-  <span class="block h-[1.5px] w-3.5 bg-slate"></span>
-  <span class="block h-[1.5px] w-5 bg-slate"></span>
-</button>
+        <!-- Mobile Hamburger Button — visible only when menu is CLOSED -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden flex flex-col gap-[5px] items-end p-1 focus:outline-none"
+          aria-label="Open menu"
+          onclick="toggleMobileMenu()"
+        >
+          <span class="block h-[1.5px] w-5 bg-slate"></span>
+          <span class="block h-[1.5px] w-3.5 bg-slate"></span>
+          <span class="block h-[1.5px] w-5 bg-slate"></span>
+        </button>
 
-<!-- Mobile Navigation Menu (close button lives INSIDE) -->
-<nav
-  id="mobile-nav"
-  class="md:hidden fixed inset-0 z-50 bg-navy-light flex flex-col justify-center items-start px-10
-         translate-x-full transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
->
-  <!-- Close button inside the overlay -->
-  <button
-    class="absolute top-4 right-4 flex flex-col gap-[5px] items-end p-2 focus:outline-none"
-    aria-label="Close menu"
-    onclick="toggleMobileMenu()"
-  >
-    <span class="block h-[1.5px] w-5 bg-slate" style="transform: translateY(3.5px) rotate(45deg)"></span>
-    <span class="block h-[1.5px] w-5 bg-slate" style="transform: translateY(-3.5px) rotate(-45deg)"></span>
-  </button>
+        <!-- Mobile Navigation Menu (close button lives INSIDE) -->
+        <nav
+          id="mobile-nav"
+          class="md:hidden fixed inset-0 z-50 bg-navy-light flex flex-col justify-center items-start px-10 translate-x-full transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+        >
+          <!-- Close button inside the overlay -->
+          <button
+            class="absolute top-4 right-4 flex flex-col gap-[5px] items-end p-2 focus:outline-none"
+            aria-label="Close menu"
+            onclick="toggleMobileMenu()"
+          >
+            <span
+              class="block h-[1.5px] w-5 bg-slate"
+              style="transform: translateY(3.5px) rotate(45deg)"
+            ></span>
+            <span
+              class="block h-[1.5px] w-5 bg-slate"
+              style="transform: translateY(-3.5px) rotate(-45deg)"
+            ></span>
+          </button>
 
-  <!-- Corner accents -->
-  <span class="fixed top-4 left-4 w-3 h-3 border-t border-l border-teal opacity-20"></span>
-  <span class="fixed bottom-4 right-4 w-3 h-3 border-b border-r border-teal opacity-20"></span>
+          <!-- Corner accents -->
+          <span
+            class="fixed top-4 left-4 w-3 h-3 border-t border-l border-teal opacity-20"
+          ></span>
+          <span
+            class="fixed bottom-4 right-4 w-3 h-3 border-b border-r border-teal opacity-20"
+          ></span>
 
-  <a href="try.html"    class="mobile-nav-link"><span class="text-teal text-[11px] mr-2.5">01.</span>Home</a>
-  <a href="#about"      class="mobile-nav-link"><span class="text-teal text-[11px] mr-2.5">02.</span>About</a>
-  <a href="#experience" class="mobile-nav-link"><span class="text-teal text-[11px] mr-2.5">03.</span>Experience</a>
-  <a href="#work"       class="mobile-nav-link"><span class="text-teal text-[11px] mr-2.5">04.</span>Work</a>
-  <a href="#contact"    class="mobile-nav-link"><span class="text-teal text-[11px] mr-2.5">05.</span>Contact</a>
-</nav>
-   
-  
-</header>
+          <a href="try.html" class="mobile-nav-link"
+            ><span class="text-teal text-[11px] mr-2.5">01.</span>Home</a
+          >
+          <a href="#about" class="mobile-nav-link"
+            ><span class="text-teal text-[11px] mr-2.5">02.</span>About</a
+          >
+          <a href="#experience" class="mobile-nav-link"
+            ><span class="text-teal text-[11px] mr-2.5">03.</span>Experience</a
+          >
+          <a href="#work" class="mobile-nav-link"
+            ><span class="text-teal text-[11px] mr-2.5">04.</span>Work</a
+          >
+          <a href="#contact" class="mobile-nav-link"
+            ><span class="text-teal text-[11px] mr-2.5">05.</span>Contact</a
+          >
+        </nav>
+      </header>
 
-<!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
      SIDEBAR LEFT
 ════════════════════════════════════ -->
-<div id="sidebar-l" class="hiddensm:hidden fixed bottom-0 left-10 z-10 flex-col items-center gap-4 sidebar-line">
-  <a href="https://github.com/abdulswabul26" target="_blank" title="Github" class="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-  </a>
-  <a href="https://www.linkedin.com/in/abdulswabulsserunjogi/" target="_blank" title="LinkedIn" class="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-  </a>
-  <a href="#" title="Instagram" class="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-  </a>
-</div>
+      <div
+        id="sidebar-l"
+        class="hiddensm:hidden fixed bottom-0 left-2 md:left-10 z-10 flex-col items-center gap-4 sidebar-line"
+      >
+        <a
+          href="https://github.com/abdulswabul26"
+          target="_blank"
+          title="Github"
+          class="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/abdulswabulsserunjogi/"
+          target="_blank"
+          title="LinkedIn"
+          class="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
+            />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+        <a
+          href="#"
+          title="Instagram"
+          class="text-slate hover:text-teal hover:-translate-y-1 transition-all duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+            />
+          </svg>
+        </a>
+      </div>
 
-<!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
      SIDEBAR RIGHT
 ════════════════════════════════════ -->
-<div id="sidebar-r" class="hidden fixed bottom-0 right-10 z-10 flex-col items-center gap-4 sidebar-line">
-  <a href="mailto:abdulswabul26@gmail.com"
-     class="font-mono text-xs text-slate tracking-widest vertical-text hover:text-teal hover:-translate-y-1 transition-all duration-300 no-underline">
-    abdulswabul26@gmail.com
-  </a>
-</div>
+      <!-- Right Sidebar (Email) -->
+      <div
+        id="sidebar-r"
+        class="fixed  bottom-0 right-2 md:right-10 z-10 flex-col items-center gap-4"
+      >
+        <!-- Email Link -->
+        <a
+          href="mailto:abdulswabul26@gmail.com"
+          class="font-mono text-xs text-slate-400 tracking-widest [writing-mode:vertical-rl] hover:text-teal-400 hover:-translate-y-1 transition-all duration-300 no-underline"
+        >
+          abdulswabul26@gmail.com
+        </a>
 
-<main>
+        <!-- Vertical Line -->
+        <div class="w-[1px] h-24 bg-slate-400 mt-4"></div>
+      </div>
 
-  <!-- ════════════════════════════════════
+      <main>
+        <!-- ════════════════════════════════════
        HERO
   ════════════════════════════════════ -->
-  <section id="home" class="min-h-screen flex items-center px-10 md:px-40 pt-28 max-w-6xl mx-auto">
-    <div class="fade-up">
-      <p class="font-mono text-teal text-base mb-4">Hi, my name is</p>
-      <h1 class="text-5xl md:text-6xl font-bold text-white-bright leading-tight">Sserunjogi Abdul Swabul.</h1>
-      <p class="max-w-xl text-[17px] mt-6 leading-7">
-        I'm a software engineer specialising in building exceptional digital experiences.
-        Currently focused on building accessible, human-centred products in Kampala, Uganda.
-      </p>
-      <a href="#"
-         class="inline-block mt-10 font-mono text-sm text-teal border border-teal rounded px-7 py-4 hover:bg-teal/10 transition-colors">
-        View Resume
-      </a>
-      <a href="#work"
-         class="inline-block mt-10 font-mono text-sm text-teal border border-teal rounded px-7 py-4 hover:bg-teal/10 transition-colors">
-        Check out my work!
-      </a>
-      
-    </div>
-  </section>
+        <section
+          id="home"
+          class="min-h-screen flex items-center px-10 md:px-40 pt-28 max-w-6xl mx-auto"
+        >
+          <div class="fade-up">
+            <p class="font-mono text-teal text-base mb-4">Hi, my name is</p>
+            <h1
+              class="text-5xl md:text-6xl font-bold text-white-bright leading-tight"
+            >
+              Sserunjogi Abdul Swabul.
+            </h1>
+            <p class="max-w-xl text-[17px] mt-6 leading-7">
+              I'm a software engineer specialising in building exceptional
+              digital experiences. Currently focused on building accessible,
+              human-centred products in Kampala, Uganda.
+            </p>
+            <a
+              href="#"
+              class="inline-block mt-10 font-mono text-sm text-teal border border-teal rounded px-7 py-4 hover:bg-teal/10 transition-colors"
+            >
+              View Resume
+            </a>
+            <a
+              href="#work"
+              class="inline-block mt-10 font-mono text-sm text-teal border border-teal rounded px-7 py-4 hover:bg-teal/10 transition-colors"
+            >
+              Check out my work!
+            </a>
+          </div>
+        </section>
 
-  <!-- ════════════════════════════════════
+        <!-- ════════════════════════════════════
        ABOUT
   ════════════════════════════════════ -->
-  <section id="about" class="py-24 px-10 md:px-40 max-w-6xl mx-auto fade-up">
+        <section
+          id="about"
+          class="py-24 px-10 md:px-40 max-w-6xl mx-auto fade-up"
+        >
+          <div class="flex items-center gap-4 mb-12 section-line">
+            <span class="font-mono text-teal text-xl">01.</span>
+            <h2
+              class="text-3xl font-semibold text-white-bright whitespace-nowrap"
+            >
+              About Me
+            </h2>
+          </div>
 
-    <div class="flex items-center gap-4 mb-12 section-line">
-      <span class="font-mono text-teal text-xl">01.</span>
-      <h2 class="text-3xl font-semibold text-white-bright whitespace-nowrap">About Me</h2>
-    </div>
+          <div class="grid md:grid-cols-[3fr_2fr] gap-16 items-start">
+            <!-- Text -->
+            <div>
+              <p class="mb-4">
+                Hello! My name is Abdul Swabul and I enjoy creating things that
+                live on the internet. My interest in web development started
+                back in 2012 when I decided to try editing custom Tumblr themes
+                — turns out hacking together a custom reblog button taught me a
+                lot about HTML &amp; CSS!
+              </p>
+              <p class="mb-4">
+                Fast-forward to today, and I've had the privilege of working at
+                <span class="text-teal"
+                  >an advertising agency, a start-up, a huge corporation,</span
+                >
+                and a student-led design studio. My main focus these days is
+                building accessible, inclusive products and digital experiences
+                at
+                <a href="#" class="text-teal hover:underline">Upstatement</a>
+                for a variety of clients.
+              </p>
+              <p class="mb-7">
+                Here are a few technologies I've been working with recently:
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <i
+                  class="devicon-javascript-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="Javascript"
+                ></i>
+                <i
+                  class="devicon-python-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="Python"
+                ></i>
+                <i
+                  class="devicon-nodejs-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="Node.js"
+                ></i>
+                <i
+                  class="devicon-mysql-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="MySQL"
+                ></i>
+                <i
+                  class="devicon-php-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="PHP"
+                ></i>
+                <i
+                  class="devicon-html5-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="HTML5"
+                ></i>
+                <i
+                  class="devicon-css3-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="CSS3"
+                ></i>
+                <i
+                  class="devicon-github-original text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300"
+                  title="GitHub"
+                ></i>
+              </div>
+            </div>
 
-    <div class="grid md:grid-cols-[3fr_2fr] gap-16 items-start">
-      <!-- Text -->
-      <div>
-        <p class="mb-4">
-          Hello! My name is Abdul Swabul and I enjoy creating things that live on the internet. My interest in web
-          development started back in 2012 when I decided to try editing custom Tumblr themes — turns out hacking
-          together a custom reblog button taught me a lot about HTML &amp; CSS!
-        </p>
-        <p class="mb-4">
-          Fast-forward to today, and I've had the privilege of working at
-          <span class="text-teal">an advertising agency, a start-up, a huge corporation,</span>
-          and a student-led design studio. My main focus these days is building accessible, inclusive products and
-          digital experiences at <a href="#" class="text-teal hover:underline">Upstatement</a> for a variety of clients.
-        </p>
-        <p class="mb-7">Here are a few technologies I've been working with recently:</p>
-        <div class="flex flex-wrap gap-4">
-          <i class="devicon-javascript-plain text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="Javascript"></i>
-          <i class="devicon-python-plain     text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="Python"></i>
-          <i class="devicon-nodejs-plain     text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="Node.js"></i>
-          <i class="devicon-mysql-plain      text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="MySQL"></i>
-          <i class="devicon-php-plain        text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="PHP"></i>
-          <i class="devicon-html5-plain      text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="HTML5"></i>
-          <i class="devicon-css3-plain       text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="CSS3"></i>
-          <i class="devicon-github-original  text-white-dim text-4xl cursor-default hover:-translate-y-1 transition-transform duration-300" title="GitHub"></i>
-        </div>
-      </div>
+            <!-- Photo -->
+            <div class="relative">
+              <div
+                class="relative w-full pt-[100%] rounded overflow-hidden bg-navy-light"
+              >
+                <img
+                  src="asset/images/profile.jpg"
+                  alt="Abdul Swabul"
+                  class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                  onerror="this.style.display = 'none'"
+                />
+                <div
+                  class="absolute inset-0 flex items-center justify-center font-mono text-[13px] text-teal/40 pointer-events-none"
+                >
+                  [ photo ]
+                </div>
+              </div>
+              <div
+                class="absolute top-3.5 left-3.5 -right-3.5 -bottom-3.5 border-2 border-teal rounded -z-10 pointer-events-none"
+              ></div>
+            </div>
+          </div>
+        </section>
 
-      <!-- Photo -->
-      <div class="relative">
-        <div class="relative w-full pt-[100%] rounded overflow-hidden bg-navy-light">
-          <img src="asset/images/profile.jpg" alt="Abdul Swabul"
-               class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
-               onerror="this.style.display='none'" />
-          <div class="absolute inset-0 flex items-center justify-center font-mono text-[13px] text-teal/40 pointer-events-none">[ photo ]</div>
-        </div>
-        <div class="absolute top-3.5 left-3.5 -right-3.5 -bottom-3.5 border-2 border-teal rounded -z-10 pointer-events-none"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════
+        <!-- ════════════════════════════════════
        EXPERIENCE
   ════════════════════════════════════ -->
-  <section id="experience" class="py-24 px-10 md:px-40 max-w-6xl mx-auto fade-up">
+        <section
+          id="experience"
+          class="py-24 px-10 md:px-40 max-w-6xl mx-auto fade-up"
+        >
+          <div class="flex items-center gap-4 mb-12 section-line">
+            <span class="font-mono text-teal text-xl">02.</span>
+            <h2
+              class="text-3xl font-semibold text-white-bright whitespace-nowrap"
+            >
+              Where I've Worked
+            </h2>
+          </div>
 
-    <div class="flex items-center gap-4 mb-12 section-line">
-      <span class="font-mono text-teal text-xl">02.</span>
-      <h2 class="text-3xl font-semibold text-white-bright whitespace-nowrap">Where I've Worked</h2>
-    </div>
+          <div class="flex flex-col md:flex-row max-w-2xl">
+            <!-- Tab buttons -->
+            <div
+              class="flex md:flex-col overflow-x-auto md:overflow-visible min-w-[160px] border-b md:border-b-0 md:border-l-2 border-navy-light"
+            >
+              <button
+                class="tab-btn font-mono text-[13px] text-left text-slate px-5 py-3 border-l-2 border-transparent hover:bg-teal/5 hover:text-teal transition-all whitespace-nowrap w-full cursor-pointer"
+                onclick="showTab(this, 'tab-upstatement')"
+              >
+                Upstatement
+              </button>
+              <button
+                class="tab-btn font-mono text-[13px] text-left text-slate px-5 py-3 border-l-2 border-transparent hover:bg-teal/5 hover:text-teal transition-all whitespace-nowrap w-full cursor-pointer"
+                onclick="showTab(this, 'tab-apple')"
+              >
+                Apple
+              </button>
+              <button
+                class="tab-btn font-mono text-[13px] text-left text-slate px-5 py-3 border-l-2 border-transparent hover:bg-teal/5 hover:text-teal transition-all whitespace-nowrap w-full cursor-pointer"
+                onclick="showTab(this, 'tab-scout')"
+              >
+                Scout Studio
+              </button>
+            </div>
 
-    <div class="flex flex-col md:flex-row max-w-2xl">
+            <!-- Tab panels -->
+            <div class="pt-2 pb-2 md:pl-8 flex-1">
+              <div id="tab-upstatement" class="tab-panel active">
+                <h3 class="text-white-bright text-xl font-medium mb-1">
+                  Software Engineer
+                  <span class="text-teal"
+                    >@ <a href="#" class="hover:underline">Upstatement</a></span
+                  >
+                </h3>
+                <p class="font-mono text-[13px] text-slate mb-6">
+                  May 2018 – Present
+                </p>
+                <ul class="space-y-2.5 text-[15px]">
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Deliver high-quality production code for clients including
+                    Harvard Business School, Everytown for Gun Safety, Pratt
+                    Institute, and The 19th.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Work alongside creative directors to lead the evolution of
+                    an internal design system.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Collaborate with cross-functional teams including designers,
+                    PMs, and engineers to ship new features.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Develop and maintain web experiences using React, Node.js,
+                    and modern JavaScript.
+                  </li>
+                </ul>
+              </div>
 
-      <!-- Tab buttons -->
-      <div class="flex md:flex-col overflow-x-auto md:overflow-visible min-w-[160px] border-b md:border-b-0 md:border-l-2 border-navy-light">
-        <button class="tab-btn font-mono text-[13px] text-left text-slate px-5 py-3 border-l-2 border-transparent hover:bg-teal/5 hover:text-teal transition-all whitespace-nowrap w-full cursor-pointer"
-                onclick="showTab(this,'tab-upstatement')">Upstatement</button>
-        <button class="tab-btn font-mono text-[13px] text-left text-slate px-5 py-3 border-l-2 border-transparent hover:bg-teal/5 hover:text-teal transition-all whitespace-nowrap w-full cursor-pointer"
-                onclick="showTab(this,'tab-apple')">Apple</button>
-        <button class="tab-btn font-mono text-[13px] text-left text-slate px-5 py-3 border-l-2 border-transparent hover:bg-teal/5 hover:text-teal transition-all whitespace-nowrap w-full cursor-pointer"
-                onclick="showTab(this,'tab-scout')">Scout Studio</button>
+              <div id="tab-apple" class="tab-panel">
+                <h3 class="text-white-bright text-xl font-medium mb-1">
+                  UI Engineer Co-op
+                  <span class="text-teal"
+                    >@ <a href="#" class="hover:underline">Apple</a></span
+                  >
+                </h3>
+                <p class="font-mono text-[13px] text-slate mb-6">
+                  July – December 2017
+                </p>
+                <ul class="space-y-2.5 text-[15px]">
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Developed and styled interactive web applications for Apple
+                    Music using Ember and SCSS.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Built and shipped the Apple Music Followers feature for
+                    Facebook Messenger, leveraging third-party and internal API
+                    integrations.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Architected the user interface of Apple Music's embeddable
+                    web player widget for in-browser authentication and
+                    full-song playback.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Contributed extensively to MusicKit.js, a public-facing
+                    JavaScript SDK for embedding Apple Music players into web
+                    applications.
+                  </li>
+                </ul>
+              </div>
 
-      </div>
+              <div id="tab-scout" class="tab-panel">
+                <h3 class="text-white-bright text-xl font-medium mb-1">
+                  Studio Developer
+                  <span class="text-teal"
+                    >@
+                    <a href="#" class="hover:underline">Scout Studio</a></span
+                  >
+                </h3>
+                <p class="font-mono text-[13px] text-slate mb-6">
+                  January – June 2017
+                </p>
+                <ul class="space-y-2.5 text-[15px]">
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Worked with a team of four engineers and designers to build
+                    a marketing website and browser extension.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Practised Agile methodologies and iterative product
+                    development in a student-run design studio.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Collaborated directly with stakeholders to refine product
+                    direction and prioritise features.
+                  </li>
+                </ul>
+              </div>
 
-      <!-- Tab panels -->
-      <div class="pt-2 pb-2 md:pl-8 flex-1">
+              <div id="tab-starry" class="tab-panel">
+                <h3 class="text-white-bright text-xl font-medium mb-1">
+                  Junior Developer
+                  <span class="text-teal"
+                    >@ <a href="#" class="hover:underline">Starry</a></span
+                  >
+                </h3>
+                <p class="font-mono text-[13px] text-slate mb-6">
+                  July – September 2016
+                </p>
+                <ul class="space-y-2.5 text-[15px]">
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Assisted in building out the front-end architecture and
+                    internal tooling for starry.com.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Proposed and implemented scalable solutions to cross-browser
+                    compatibility issues.
+                  </li>
+                  <li
+                    class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal"
+                  >
+                    Participated in design critiques and UI/UX reviews with the
+                    product team.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div id="tab-upstatement" class="tab-panel active">
-          <h3 class="text-white-bright text-xl font-medium mb-1">Software Engineer <span class="text-teal">@ <a href="#" class="hover:underline">Upstatement</a></span></h3>
-          <p class="font-mono text-[13px] text-slate mb-6">May 2018 – Present</p>
-          <ul class="space-y-2.5 text-[15px]">
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Deliver high-quality production code for clients including Harvard Business School, Everytown for Gun Safety, Pratt Institute, and The 19th.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Work alongside creative directors to lead the evolution of an internal design system.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Collaborate with cross-functional teams including designers, PMs, and engineers to ship new features.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Develop and maintain web experiences using React, Node.js, and modern JavaScript.</li>
-          </ul>
-        </div>
-
-        <div id="tab-apple" class="tab-panel">
-          <h3 class="text-white-bright text-xl font-medium mb-1">UI Engineer Co-op <span class="text-teal">@ <a href="#" class="hover:underline">Apple</a></span></h3>
-          <p class="font-mono text-[13px] text-slate mb-6">July – December 2017</p>
-          <ul class="space-y-2.5 text-[15px]">
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Developed and styled interactive web applications for Apple Music using Ember and SCSS.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Built and shipped the Apple Music Followers feature for Facebook Messenger, leveraging third-party and internal API integrations.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Architected the user interface of Apple Music's embeddable web player widget for in-browser authentication and full-song playback.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Contributed extensively to MusicKit.js, a public-facing JavaScript SDK for embedding Apple Music players into web applications.</li>
-          </ul>
-        </div>
-
-        <div id="tab-scout" class="tab-panel">
-          <h3 class="text-white-bright text-xl font-medium mb-1">Studio Developer <span class="text-teal">@ <a href="#" class="hover:underline">Scout Studio</a></span></h3>
-          <p class="font-mono text-[13px] text-slate mb-6">January – June 2017</p>
-          <ul class="space-y-2.5 text-[15px]">
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Worked with a team of four engineers and designers to build a marketing website and browser extension.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Practised Agile methodologies and iterative product development in a student-run design studio.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Collaborated directly with stakeholders to refine product direction and prioritise features.</li>
-          </ul>
-        </div>
-
-        <div id="tab-starry" class="tab-panel">
-          <h3 class="text-white-bright text-xl font-medium mb-1">Junior Developer <span class="text-teal">@ <a href="#" class="hover:underline">Starry</a></span></h3>
-          <p class="font-mono text-[13px] text-slate mb-6">July – September 2016</p>
-          <ul class="space-y-2.5 text-[15px]">
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Assisted in building out the front-end architecture and internal tooling for starry.com.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Proposed and implemented scalable solutions to cross-browser compatibility issues.</li>
-            <li class="relative pl-5 before:content-['▹'] before:absolute before:left-0 before:text-teal">Participated in design critiques and UI/UX reviews with the product team.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════
+        <!-- ════════════════════════════════════
        WORK
   ════════════════════════════════════ -->
-  <section id="work" class="py-24 px-10 md:px-40 max-w-6xl mx-auto fade-up">
-
-    <div class="flex items-center gap-4 mb-16 section-line">
-      <span class="font-mono text-teal text-xl">03.</span>
-      <h2 class="text-3xl font-semibold text-white-bright whitespace-nowrap">Some Things I've Built</h2>
-    </div>
-
-    <!-- ── Featured 1 ── -->
-    <div class="grid md:grid-cols-2 gap-0 items-center mb-20">
-      <div class="relative img-overlay rounded overflow-hidden">
-        <div class="w-full h-72 bg-navy-light flex items-center justify-center rounded">
-          <svg width="75%" height="75%" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="260" rx="6" fill="#0d2137"/>
-            <rect x="20" y="20" width="360" height="30" rx="3" fill="#0a2744"/>
-            <rect x="20" y="60" width="200" height="16" rx="3" fill="#1a3a5c"/>
-            <rect x="20" y="85" width="280" height="12" rx="3" fill="#112240"/>
-            <rect x="20" y="105" width="240" height="12" rx="3" fill="#112240"/>
-            <rect x="20" y="130" width="360" height="80" rx="3" fill="#0d2137"/>
-            <rect x="30" y="140" width="340" height="10" rx="2" fill="#1a3a5c"/>
-            <rect x="30" y="158" width="300" height="10" rx="2" fill="#1a3a5c"/>
-            <rect x="30" y="176" width="260" height="10" rx="2" fill="#1a3a5c"/>
-            <text x="200" y="240" text-anchor="middle" fill="#64ffda" font-size="12" font-family="monospace">Halcyon Theme</text>
-          </svg>
-        </div>
-      </div>
-      <div class="md:pl-10 mt-6 md:mt-0">
-        <p class="font-mono text-xs text-teal mb-2">Featured Project</p>
-        <h3 class="text-2xl font-semibold text-white-bright mb-5"><a href="#" class="hover:text-teal transition-colors">Halcyon Theme</a></h3>
-        <div class="bg-navy-light p-6 rounded text-[15px] leading-7 mb-5 shadow-[0_10px_30px_rgba(2,12,27,0.7)]">
-          A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.
-        </div>
-        <div class="flex flex-wrap gap-3 mb-4">
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">VS Code</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Sublime Text</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Atom</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">iTerm2</span>
-        </div>
-        <div class="flex gap-4">
-          <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-          <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Featured 2 (reversed) ── -->
-    <div class="grid md:grid-cols-2 gap-0 items-center mb-20">
-      <div class="md:pr-10 mt-6 md:mt-0 md:text-right order-2 md:order-1">
-        <p class="font-mono text-xs text-teal mb-2">Featured Project</p>
-        <h3 class="text-2xl font-semibold text-white-bright mb-5"><a href="#" class="hover:text-teal transition-colors">Spotify Profile</a></h3>
-        <div class="bg-navy-light p-6 rounded text-[15px] leading-7 mb-5 shadow-[0_10px_30px_rgba(2,12,27,0.7)]">
-          A web app for visualising personalised Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists.
-        </div>
-        <div class="flex flex-wrap gap-3 mb-4 md:justify-end">
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">React</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Styled Components</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Express</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Spotify API</span>
-        </div>
-        <div class="flex gap-4 md:justify-end">
-          <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-          <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-      <div class="relative img-overlay rounded overflow-hidden order-1 md:order-2">
-        <div class="w-full h-72 bg-[#0d2a1a] flex items-center justify-center rounded">
-          <svg width="75%" height="75%" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="260" rx="6" fill="#0d2a1a"/>
-            <circle cx="200" cy="100" r="50" fill="#1a4a2a"/>
-            <circle cx="200" cy="100" r="35" fill="#0d2a1a"/>
-            <rect x="170" y="165" width="60" height="6" rx="3" fill="#64ffda" opacity="0.4"/>
-            <rect x="150" y="180" width="100" height="6" rx="3" fill="#64ffda" opacity="0.3"/>
-            <rect x="130" y="195" width="140" height="6" rx="3" fill="#64ffda" opacity="0.2"/>
-            <text x="200" y="108" text-anchor="middle" fill="#64ffda" font-size="16" font-family="monospace">♪</text>
-            <text x="200" y="240" text-anchor="middle" fill="#64ffda" font-size="12" font-family="monospace">Spotify Profile</text>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Featured 3 ── -->
-    <div class="grid md:grid-cols-2 gap-0 items-center mb-20">
-      <div class="relative img-overlay rounded overflow-hidden">
-        <div class="w-full h-72 bg-[#1a1a2e] flex items-center justify-center rounded">
-          <svg width="75%" height="75%" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="260" rx="6" fill="#1a1a2e"/>
-            <rect x="20" y="20" width="360" height="50" rx="4" fill="#16213e"/>
-            <rect x="30" y="30" width="80" height="30" rx="3" fill="#0f3460" opacity="0.8"/>
-            <text x="70" y="50" text-anchor="middle" fill="#64ffda" font-size="10" font-family="monospace">node</text>
-            <circle cx="160" cy="45" r="18" fill="#1db954" opacity="0.8"/>
-            <text x="160" y="50" text-anchor="middle" fill="white" font-size="12" font-family="monospace">♪</text>
-            <rect x="20" y="90" width="360" height="140" rx="4" fill="#16213e"/>
-            <rect x="30" y="105" width="200" height="12" rx="2" fill="#0f3460"/>
-            <rect x="30" y="125" width="320" height="8" rx="2" fill="#1a1a2e"/>
-            <rect x="30" y="141" width="280" height="8" rx="2" fill="#1a1a2e"/>
-            <text x="200" y="240" text-anchor="middle" fill="#64ffda" font-size="12" font-family="monospace">Spotify Connected App</text>
-          </svg>
-        </div>
-      </div>
-      <div class="md:pl-10 mt-6 md:mt-0">
-        <p class="font-mono text-xs text-teal mb-2">Featured Project</p>
-        <h3 class="text-2xl font-semibold text-white-bright mb-5"><a href="#" class="hover:text-teal transition-colors">Build a Spotify Connected App</a></h3>
-        <div class="bg-navy-light p-6 rounded text-[15px] leading-7 mb-5 shadow-[0_10px_30px_rgba(2,12,27,0.7)]">
-          Having fun upskilling with the Spotify OAuth flow recently, I built the course I wish I could have had! This covers everything from REST API concepts to implementing Spotify's OAuth flow and testing API data in a React app deployed to the internet.
-        </div>
-        <div class="flex flex-wrap gap-3 mb-4">
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">React</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Express</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Spotify API</span>
-          <span class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded">Styled Components</span>
-        </div>
-        <div class="flex gap-4">
-          <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Other Noteworthy Projects ── -->
-    <div class="text-center mb-10 mt-20">
-      <h3 class="text-2xl font-semibold text-white-bright mb-2">Other Noteworthy Projects</h3>
-      <a href="#" class="font-mono text-[13px] text-teal hover:underline">view the archive</a>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-4">
-
-      <!-- Card 1 -->
-      <div class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300">
-        <div class="flex justify-between items-center mb-7">
-          <svg class="text-teal" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <div class="flex gap-3">
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <section
+          id="work"
+          class="py-24 px-10 md:px-40 max-w-6xl mx-auto fade-up"
+        >
+          <div class="flex items-center gap-4 mb-16 section-line">
+            <span class="font-mono text-teal text-xl">03.</span>
+            <h2
+              class="text-3xl font-semibold text-white-bright whitespace-nowrap"
+            >
+              Some Things I've Built
+            </h2>
           </div>
-        </div>
-        <h3 class="text-white-bright text-lg font-semibold mb-3"><a href="#" class="hover:text-teal transition-colors">Integrating Algolia Search with WordPress Multisite</a></h3>
-        <p class="text-sm leading-relaxed flex-1 mb-5">Building a custom multisite compatible WordPress plugin to build global search with Algolia.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Algolia</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">WordPress</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">PHP</span>
-        </div>
-      </div>
 
-      <!-- Card 2 -->
-      <div class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300">
-        <div class="flex justify-between items-center mb-7">
-          <svg class="text-teal" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <div class="flex gap-3">
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+          <!-- ── Featured 1 ── -->
+          <div class="grid md:grid-cols-2 gap-0 items-center mb-20">
+            <div class="relative img-overlay rounded overflow-hidden">
+              <div
+                class="w-full h-72 bg-navy-light flex items-center justify-center rounded"
+              >
+                <svg
+                  width="75%"
+                  height="75%"
+                  viewBox="0 0 400 260"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="400" height="260" rx="6" fill="#0d2137" />
+                  <rect
+                    x="20"
+                    y="20"
+                    width="360"
+                    height="30"
+                    rx="3"
+                    fill="#0a2744"
+                  />
+                  <rect
+                    x="20"
+                    y="60"
+                    width="200"
+                    height="16"
+                    rx="3"
+                    fill="#1a3a5c"
+                  />
+                  <rect
+                    x="20"
+                    y="85"
+                    width="280"
+                    height="12"
+                    rx="3"
+                    fill="#112240"
+                  />
+                  <rect
+                    x="20"
+                    y="105"
+                    width="240"
+                    height="12"
+                    rx="3"
+                    fill="#112240"
+                  />
+                  <rect
+                    x="20"
+                    y="130"
+                    width="360"
+                    height="80"
+                    rx="3"
+                    fill="#0d2137"
+                  />
+                  <rect
+                    x="30"
+                    y="140"
+                    width="340"
+                    height="10"
+                    rx="2"
+                    fill="#1a3a5c"
+                  />
+                  <rect
+                    x="30"
+                    y="158"
+                    width="300"
+                    height="10"
+                    rx="2"
+                    fill="#1a3a5c"
+                  />
+                  <rect
+                    x="30"
+                    y="176"
+                    width="260"
+                    height="10"
+                    rx="2"
+                    fill="#1a3a5c"
+                  />
+                  <text
+                    x="200"
+                    y="240"
+                    text-anchor="middle"
+                    fill="#64ffda"
+                    font-size="12"
+                    font-family="monospace"
+                  >
+                    Halcyon Theme
+                  </text>
+                </svg>
+              </div>
+            </div>
+            <div class="md:pl-10 mt-6 md:mt-0">
+              <p class="font-mono text-xs text-teal mb-2">Featured Project</p>
+              <h3 class="text-2xl font-semibold text-white-bright mb-5">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Halcyon Theme</a
+                >
+              </h3>
+              <div
+                class="bg-navy-light p-6 rounded text-[15px] leading-7 mb-5 shadow-[0_10px_30px_rgba(2,12,27,0.7)]"
+              >
+                A minimal, dark blue theme for VS Code, Sublime Text, Atom,
+                iTerm, and more. Available on Visual Studio Marketplace, Package
+                Control, Atom Package Manager, and npm.
+              </div>
+              <div class="flex flex-wrap gap-3 mb-4">
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >VS Code</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Sublime Text</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Atom</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >iTerm2</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a href="#" class="text-slate hover:text-teal transition-colors"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    /></svg
+                ></a>
+                <a href="#" class="text-slate hover:text-teal transition-colors"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" /></svg
+                ></a>
+              </div>
+            </div>
           </div>
-        </div>
-        <h3 class="text-white-bright text-lg font-semibold mb-3"><a href="#" class="hover:text-teal transition-colors">Time to Have More Fun</a></h3>
-        <p class="text-sm leading-relaxed flex-1 mb-5">A single page app for helping me choose where to have lunch with ReactJS, Firebase, and TailwindCSS.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Next.js</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Tailwind</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Firebase</span>
-        </div>
-      </div>
 
-      <!-- Card 3 -->
-      <div class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300">
-        <div class="flex justify-between items-center mb-7">
-          <svg class="text-teal" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <div class="flex gap-3">
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <!-- ── Featured 2 (reversed) ── -->
+          <div class="grid md:grid-cols-2 gap-0 items-center mb-20">
+            <div class="md:pr-10 mt-6 md:mt-0 md:text-right order-2 md:order-1">
+              <p class="font-mono text-xs text-teal mb-2">Featured Project</p>
+              <h3 class="text-2xl font-semibold text-white-bright mb-5">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Spotify Profile</a
+                >
+              </h3>
+              <div
+                class="bg-navy-light p-6 rounded text-[15px] leading-7 mb-5 shadow-[0_10px_30px_rgba(2,12,27,0.7)]"
+              >
+                A web app for visualising personalised Spotify data. View your
+                top artists, top tracks, recently played tracks, and detailed
+                audio information about each track. Create and save new
+                playlists of recommended tracks based on your existing
+                playlists.
+              </div>
+              <div class="flex flex-wrap gap-3 mb-4 md:justify-end">
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >React</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Styled Components</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Express</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Spotify API</span
+                >
+              </div>
+              <div class="flex gap-4 md:justify-end">
+                <a href="#" class="text-slate hover:text-teal transition-colors"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                    /></svg
+                ></a>
+                <a href="#" class="text-slate hover:text-teal transition-colors"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" /></svg
+                ></a>
+              </div>
+            </div>
+            <div
+              class="relative img-overlay rounded overflow-hidden order-1 md:order-2"
+            >
+              <div
+                class="w-full h-72 bg-[#0d2a1a] flex items-center justify-center rounded"
+              >
+                <svg
+                  width="75%"
+                  height="75%"
+                  viewBox="0 0 400 260"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="400" height="260" rx="6" fill="#0d2a1a" />
+                  <circle cx="200" cy="100" r="50" fill="#1a4a2a" />
+                  <circle cx="200" cy="100" r="35" fill="#0d2a1a" />
+                  <rect
+                    x="170"
+                    y="165"
+                    width="60"
+                    height="6"
+                    rx="3"
+                    fill="#64ffda"
+                    opacity="0.4"
+                  />
+                  <rect
+                    x="150"
+                    y="180"
+                    width="100"
+                    height="6"
+                    rx="3"
+                    fill="#64ffda"
+                    opacity="0.3"
+                  />
+                  <rect
+                    x="130"
+                    y="195"
+                    width="140"
+                    height="6"
+                    rx="3"
+                    fill="#64ffda"
+                    opacity="0.2"
+                  />
+                  <text
+                    x="200"
+                    y="108"
+                    text-anchor="middle"
+                    fill="#64ffda"
+                    font-size="16"
+                    font-family="monospace"
+                  >
+                    ♪
+                  </text>
+                  <text
+                    x="200"
+                    y="240"
+                    text-anchor="middle"
+                    fill="#64ffda"
+                    font-size="12"
+                    font-family="monospace"
+                  >
+                    Spotify Profile
+                  </text>
+                </svg>
+              </div>
+            </div>
           </div>
-        </div>
-        <h3 class="text-white-bright text-lg font-semibold mb-3"><a href="#" class="hover:text-teal transition-colors">Building a Headless Mobile App CMS From Scratch</a></h3>
-        <p class="text-sm leading-relaxed flex-1 mb-5">Find out how we built a custom headless CMS with Node, Express, and Firebase for a project at Upstatement.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Node</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Express</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Firebase</span>
-        </div>
-      </div>
 
-      <!-- Card 4 -->
-      <div class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300">
-        <div class="flex justify-between items-center mb-7">
-          <svg class="text-teal" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <div class="flex gap-3">
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+          <!-- ── Featured 3 ── -->
+          <div class="grid md:grid-cols-2 gap-0 items-center mb-20">
+            <div class="relative img-overlay rounded overflow-hidden">
+              <div
+                class="w-full h-72 bg-[#1a1a2e] flex items-center justify-center rounded"
+              >
+                <svg
+                  width="75%"
+                  height="75%"
+                  viewBox="0 0 400 260"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="400" height="260" rx="6" fill="#1a1a2e" />
+                  <rect
+                    x="20"
+                    y="20"
+                    width="360"
+                    height="50"
+                    rx="4"
+                    fill="#16213e"
+                  />
+                  <rect
+                    x="30"
+                    y="30"
+                    width="80"
+                    height="30"
+                    rx="3"
+                    fill="#0f3460"
+                    opacity="0.8"
+                  />
+                  <text
+                    x="70"
+                    y="50"
+                    text-anchor="middle"
+                    fill="#64ffda"
+                    font-size="10"
+                    font-family="monospace"
+                  >
+                    node
+                  </text>
+                  <circle
+                    cx="160"
+                    cy="45"
+                    r="18"
+                    fill="#1db954"
+                    opacity="0.8"
+                  />
+                  <text
+                    x="160"
+                    y="50"
+                    text-anchor="middle"
+                    fill="white"
+                    font-size="12"
+                    font-family="monospace"
+                  >
+                    ♪
+                  </text>
+                  <rect
+                    x="20"
+                    y="90"
+                    width="360"
+                    height="140"
+                    rx="4"
+                    fill="#16213e"
+                  />
+                  <rect
+                    x="30"
+                    y="105"
+                    width="200"
+                    height="12"
+                    rx="2"
+                    fill="#0f3460"
+                  />
+                  <rect
+                    x="30"
+                    y="125"
+                    width="320"
+                    height="8"
+                    rx="2"
+                    fill="#1a1a2e"
+                  />
+                  <rect
+                    x="30"
+                    y="141"
+                    width="280"
+                    height="8"
+                    rx="2"
+                    fill="#1a1a2e"
+                  />
+                  <text
+                    x="200"
+                    y="240"
+                    text-anchor="middle"
+                    fill="#64ffda"
+                    font-size="12"
+                    font-family="monospace"
+                  >
+                    Spotify Connected App
+                  </text>
+                </svg>
+              </div>
+            </div>
+            <div class="md:pl-10 mt-6 md:mt-0">
+              <p class="font-mono text-xs text-teal mb-2">Featured Project</p>
+              <h3 class="text-2xl font-semibold text-white-bright mb-5">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Build a Spotify Connected App</a
+                >
+              </h3>
+              <div
+                class="bg-navy-light p-6 rounded text-[15px] leading-7 mb-5 shadow-[0_10px_30px_rgba(2,12,27,0.7)]"
+              >
+                Having fun upskilling with the Spotify OAuth flow recently, I
+                built the course I wish I could have had! This covers everything
+                from REST API concepts to implementing Spotify's OAuth flow and
+                testing API data in a React app deployed to the internet.
+              </div>
+              <div class="flex flex-wrap gap-3 mb-4">
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >React</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Express</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Spotify API</span
+                >
+                <span
+                  class="font-mono text-xs text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Styled Components</span
+                >
+              </div>
+              <div class="flex gap-4">
+                <a href="#" class="text-slate hover:text-teal transition-colors"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                    />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" /></svg
+                ></a>
+              </div>
+            </div>
           </div>
-        </div>
-        <h3 class="text-white-bright text-lg font-semibold mb-3"><a href="#" class="hover:text-teal transition-colors">OctoProfile</a></h3>
-        <p class="text-sm leading-relaxed flex-1 mb-5">A nicer look at your GitHub profile and repos. Visualise repository data, navigate by stars, forks and more.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Next.js</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Chart.js</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">GitHub API</span>
-        </div>
-      </div>
 
-      <!-- Card 5 -->
-      <div class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300">
-        <div class="flex justify-between items-center mb-7">
-          <svg class="text-teal" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <div class="flex gap-3">
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <!-- ── Other Noteworthy Projects ── -->
+          <div class="text-center mb-10 mt-20">
+            <h3 class="text-2xl font-semibold text-white-bright mb-2">
+              Other Noteworthy Projects
+            </h3>
+            <a href="#" class="font-mono text-[13px] text-teal hover:underline"
+              >view the archive</a
+            >
           </div>
-        </div>
-        <h3 class="text-white-bright text-lg font-semibold mb-3"><a href="#" class="hover:text-teal transition-colors">Google Keep Clone</a></h3>
-        <p class="text-sm leading-relaxed flex-1 mb-5">A simple Google Keep clone built with Vue and Firebase, featuring real-time syncing and drag-and-drop notes.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Vue</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">Firebase</span>
-        </div>
-      </div>
 
-      <!-- Card 6 -->
-      <div class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300">
-        <div class="flex justify-between items-center mb-7">
-          <svg class="text-teal" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-          <div class="flex gap-3">
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-            <a href="#" class="text-slate hover:text-teal transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+          <div class="grid md:grid-cols-3 gap-4">
+            <!-- Card 1 -->
+            <div
+              class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300"
+            >
+              <div class="flex justify-between items-center mb-7">
+                <svg
+                  class="text-teal"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  />
+                </svg>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      /></svg
+                  ></a>
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" /></svg
+                  ></a>
+                </div>
+              </div>
+              <h3 class="text-white-bright text-lg font-semibold mb-3">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Integrating Algolia Search with WordPress Multisite</a
+                >
+              </h3>
+              <p class="text-sm leading-relaxed flex-1 mb-5">
+                Building a custom multisite compatible WordPress plugin to build
+                global search with Algolia.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Algolia</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >WordPress</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >PHP</span
+                >
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300"
+            >
+              <div class="flex justify-between items-center mb-7">
+                <svg
+                  class="text-teal"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  />
+                </svg>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      /></svg
+                  ></a>
+                </div>
+              </div>
+              <h3 class="text-white-bright text-lg font-semibold mb-3">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Time to Have More Fun</a
+                >
+              </h3>
+              <p class="text-sm leading-relaxed flex-1 mb-5">
+                A single page app for helping me choose where to have lunch with
+                ReactJS, Firebase, and TailwindCSS.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Next.js</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Tailwind</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Firebase</span
+                >
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300"
+            >
+              <div class="flex justify-between items-center mb-7">
+                <svg
+                  class="text-teal"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  />
+                </svg>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      /></svg
+                  ></a>
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" /></svg
+                  ></a>
+                </div>
+              </div>
+              <h3 class="text-white-bright text-lg font-semibold mb-3">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Building a Headless Mobile App CMS From Scratch</a
+                >
+              </h3>
+              <p class="text-sm leading-relaxed flex-1 mb-5">
+                Find out how we built a custom headless CMS with Node, Express,
+                and Firebase for a project at Upstatement.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Node</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Express</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Firebase</span
+                >
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300"
+            >
+              <div class="flex justify-between items-center mb-7">
+                <svg
+                  class="text-teal"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  />
+                </svg>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      /></svg
+                  ></a>
+                </div>
+              </div>
+              <h3 class="text-white-bright text-lg font-semibold mb-3">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >OctoProfile</a
+                >
+              </h3>
+              <p class="text-sm leading-relaxed flex-1 mb-5">
+                A nicer look at your GitHub profile and repos. Visualise
+                repository data, navigate by stars, forks and more.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Next.js</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Chart.js</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >GitHub API</span
+                >
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div
+              class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300"
+            >
+              <div class="flex justify-between items-center mb-7">
+                <svg
+                  class="text-teal"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  />
+                </svg>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      /></svg
+                  ></a>
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" /></svg
+                  ></a>
+                </div>
+              </div>
+              <h3 class="text-white-bright text-lg font-semibold mb-3">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Google Keep Clone</a
+                >
+              </h3>
+              <p class="text-sm leading-relaxed flex-1 mb-5">
+                A simple Google Keep clone built with Vue and Firebase,
+                featuring real-time syncing and drag-and-drop notes.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Vue</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >Firebase</span
+                >
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div
+              class="bg-navy-light rounded p-8 flex flex-col hover:-translate-y-1.5 transition-transform duration-300"
+            >
+              <div class="flex justify-between items-center mb-7">
+                <svg
+                  class="text-teal"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+                  />
+                </svg>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                      /></svg
+                  ></a>
+                  <a
+                    href="#"
+                    class="text-slate hover:text-teal transition-colors"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                      />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" /></svg
+                  ></a>
+                </div>
+              </div>
+              <h3 class="text-white-bright text-lg font-semibold mb-3">
+                <a href="#" class="hover:text-teal transition-colors"
+                  >Apple Music Embeddable Web Player Widget</a
+                >
+              </h3>
+              <p class="text-sm leading-relaxed flex-1 mb-5">
+                Embeddable web component for Apple Music that lets you build
+                Apple Music players into any website using MusicKit.js.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >MusicKit.js</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >JS</span
+                >
+                <span
+                  class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded"
+                  >CSS</span
+                >
+              </div>
+            </div>
           </div>
-        </div>
-        <h3 class="text-white-bright text-lg font-semibold mb-3"><a href="#" class="hover:text-teal transition-colors">Apple Music Embeddable Web Player Widget</a></h3>
-        <p class="text-sm leading-relaxed flex-1 mb-5">Embeddable web component for Apple Music that lets you build Apple Music players into any website using MusicKit.js.</p>
-        <div class="flex flex-wrap gap-2">
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">MusicKit.js</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">JS</span>
-          <span class="font-mono text-[11px] text-teal bg-teal/10 px-2.5 py-1 rounded">CSS</span>
-        </div>
-      </div>
 
-    </div>
+          <div class="text-center mt-12">
+            <button
+              class="font-mono text-sm text-teal border border-teal rounded px-7 py-3.5 bg-transparent hover:bg-teal/10 transition-colors cursor-pointer"
+            >
+              Show More
+            </button>
+          </div>
+        </section>
 
-    <div class="text-center mt-12">
-      <button class="font-mono text-sm text-teal border border-teal rounded px-7 py-3.5 bg-transparent hover:bg-teal/10 transition-colors cursor-pointer">
-        Show More
-      </button>
-    </div>
-
-  </section>
-
-  <!-- ════════════════════════════════════
+        <!-- ════════════════════════════════════
        CONTACT
   ════════════════════════════════════ -->
-  <section id="contact" class="py-24 px-10 md:px-40 pb-32 max-w-6xl mx-auto fade-up">
-    <div class="max-w-lg mx-auto text-center">
-      <p class="font-mono text-teal text-sm mb-5">04. What's Next?</p>
-      <h2 class="text-5xl md:text-6xl font-semibold text-white-bright mb-6 leading-tight">Get In Touch</h2>
-      <p class="text-[17px] leading-7 mb-12">
-        Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a
-        question or just want to say hi, I'll try my best to get back to you!
-      </p>
-      <a href="mailto:abdulswabul@gmail.com"
-         class="font-mono text-sm text-teal border border-teal rounded px-8 py-4 hover:bg-teal/10 transition-colors">
-        Say Hello
-      </a>
-    </div>
-  </section>
+        <section
+          id="contact"
+          class="py-24 px-10 md:px-40 pb-32 max-w-6xl mx-auto fade-up"
+        >
+          <div class="max-w-lg mx-auto text-center">
+            <p class="font-mono text-teal text-sm mb-5">04. What's Next?</p>
+            <h2
+              class="text-5xl md:text-6xl font-semibold text-white-bright mb-6 leading-tight"
+            >
+              Get In Touch
+            </h2>
+            <p class="text-[17px] leading-7 mb-12">
+              Although I'm not currently looking for any new opportunities, my
+              inbox is always open. Whether you have a question or just want to
+              say hi, I'll try my best to get back to you!
+            </p>
+            <a
+              href="mailto:abdulswabul@gmail.com"
+              class="font-mono text-sm text-teal border border-teal rounded px-8 py-4 hover:bg-teal/10 transition-colors"
+            >
+              Say Hello
+            </a>
+          </div>
+        </section>
+      </main>
 
-</main>
-
-<!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
      FOOTER
 ════════════════════════════════════ -->
-<footer class="text-center pb-10 pt-6 font-mono text-xs text-slate">
-  <p class="mb-1.5">
-    <a href="https://github.com/abdulswabul" target="_blank" class="hover:text-teal transition-colors">
-      Designed &amp; Built by Sserunjogi Abdul Swabul
-    </a>
-  </p>
-  <p id="time-footer">Loading time...</p>
-</footer></main>
+      <footer class="text-center pb-10 pt-6 font-mono text-xs text-slate">
+        <p class="mb-1.5">
+          <a
+            href="https://github.com/abdulswabul"
+            target="_blank"
+            class="hover:text-teal transition-colors"
+          >
+            Designed &amp; Built by Sserunjogi Abdul Swabul
+          </a>
+        </p>
+        <p id="time-footer">Loading time...</p>
+      </footer>
+    </main>
 
-<script>
-  // Preloader
-  window.addEventListener('load', () => {
-    const ring = document.getElementById('pl-ring');
-    const num = document.getElementById('pl-num');
-    const circumference = 220;
-    let progress = 0;
+    <script>
+      // Preloader
+      window.addEventListener("load", () => {
+        const ring = document.getElementById("pl-ring");
+        const num = document.getElementById("pl-num");
+        const circumference = 220;
+        let progress = 0;
 
-    const interval = setInterval(() => {
-      progress += Math.random() * 12 + 3;
-      if (progress >= 100) {
-        progress = 100;
-        clearInterval(interval);
+        const interval = setInterval(() => {
+          progress += Math.random() * 12 + 3;
+          if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+          }
+          const offset = circumference - (progress / 100) * circumference;
+          ring.style.strokeDashoffset = offset;
+          num.textContent = Math.round(progress);
+
+          if (progress === 100) {
+            setTimeout(() => {
+              document.getElementById("preloader").classList.add("hidden");
+            }, 400);
+          }
+        }, 80);
+      });
+      // Tab switching
+      function showTab(btn, panelId) {
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-panel")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(panelId).classList.add("active");
       }
-      const offset = circumference - (progress / 100) * circumference;
-      ring.style.strokeDashoffset = offset;
-      num.textContent = Math.round(progress);
 
-      if (progress === 100) {
+      // Activate first tab on load
+      document.querySelector(".tab-btn").click();
+
+      // Scroll fade-in
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => io.observe(el));
+
+      // Show sidebars after load
+      window.addEventListener("load", () => {
         setTimeout(() => {
-          document.getElementById('preloader').classList.add('hidden');
+          document.getElementById("sidebar-l").style.display = "flex";
+          document.getElementById("sidebar-r").style.display = "flex";
         }, 400);
+      });
+
+      // Live clock
+      function updateTime() {
+        const now = new Date();
+        let h = now.getHours(),
+          m = now.getMinutes();
+        const ampm = h >= 12 ? "PM" : "AM";
+        h = h % 12 || 12;
+        m = m < 10 ? "0" + m : m;
+        const el = document.getElementById("time-footer");
+        if (el) el.textContent = `${h}:${m} ${ampm} GMT+3`;
       }
-    }, 80);
-  });
-  // Tab switching
-  function showTab(btn, panelId) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(panelId).classList.add('active');
-  }
+      updateTime();
+      setInterval(updateTime, 1000);
 
-  // Activate first tab on load
-  document.querySelector('.tab-btn').click();
+      // Add to your JS
+      function toggleMobileMenu() {
+        const nav = document.getElementById("mobile-nav");
+        const btn = document.getElementById("mobile-menu-btn");
+        const [b1, b2, b3] = [
+          document.getElementById("bar1"),
+          document.getElementById("bar2"),
+          document.getElementById("bar3"),
+        ];
 
-  // Scroll fade-in
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+        const isOpen = nav.classList.toggle("open");
+        nav.classList.toggle("translate-x-full", !isOpen);
+        nav.classList.toggle("translate-x-0", isOpen);
 
-  // Show sidebars after load
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('sidebar-l').style.display = 'flex';
-      document.getElementById('sidebar-r').style.display = 'flex';
-    }, 400);
-  });
+        // Animate hamburger → X
+        if (isOpen) {
+          b1.style.transform = "translateY(6.5px) rotate(45deg)";
+          b2.style.opacity = "0";
+          b3.style.transform = "translateY(-6.5px) rotate(-45deg)";
+        } else {
+          b1.style.transform = "";
+          b2.style.opacity = "1";
+          b3.style.transform = "";
+        }
+      }
 
-  // Live clock
-  function updateTime() {
-    const now = new Date();
-    let h = now.getHours(), m = now.getMinutes();
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12 || 12;
-    m = m < 10 ? '0' + m : m;
-    const el = document.getElementById('time-footer');
-    if (el) el.textContent = `${h}:${m} ${ampm} GMT+3`;
-  }
-  updateTime();
-  setInterval(updateTime, 1000);
-
-  // Add to your JS
-function toggleMobileMenu() {
-  const nav = document.getElementById('mobile-nav');
-  const btn = document.getElementById('mobile-menu-btn');
-  const [b1, b2, b3] = [
-    document.getElementById('bar1'),
-    document.getElementById('bar2'),
-    document.getElementById('bar3'),
-  ];
-
-  const isOpen = nav.classList.toggle('open');
-  nav.classList.toggle('translate-x-full', !isOpen);
-  nav.classList.toggle('translate-x-0', isOpen);
-
-  // Animate hamburger → X
-  if (isOpen) {
-    b1.style.transform = 'translateY(6.5px) rotate(45deg)';
-    b2.style.opacity = '0';
-    b3.style.transform = 'translateY(-6.5px) rotate(-45deg)';
-  } else {
-    b1.style.transform = '';
-    b2.style.opacity = '1';
-    b3.style.transform = '';
-  }
-}
-
-// Close on nav link click
-document.querySelectorAll('#mobile-nav .mobile-nav-link')
-  .forEach(link => link.addEventListener('click', toggleMobileMenu));
-</script>
-</body>
+      // Close on nav link click
+      document
+        .querySelectorAll("#mobile-nav .mobile-nav-link")
+        .forEach((link) => link.addEventListener("click", toggleMobileMenu));
+    </script>
+  </body>
 </html>
